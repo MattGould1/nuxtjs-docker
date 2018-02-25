@@ -43,8 +43,7 @@ services:
         volumes_from:
             - applications
         ports:
-            - 3333:3333
-        container_name: nuxt-client
+            - 3000:3000
         command: ["npm", "run", "buildStart"]
         networks:
             - nuxt
