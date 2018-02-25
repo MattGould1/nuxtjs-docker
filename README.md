@@ -86,4 +86,3 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up (optional -d)
 ``` bash
 docker-compose up (optional -d)
 ```
-
