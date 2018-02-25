@@ -12,11 +12,6 @@ this script will update apt-get, optionally install openssl (if you do not have 
 #### Everyone else
 You may generate your own certificates (or use pre-existing), update your .env file to reflect the filepath of your certificates.
 
-### Copy DOTENV
-``` bash
-cp .env.example .env
-```
-
 ### Docker Build
 ``` bash
 docker-compose build
@@ -50,6 +45,11 @@ cp ./config/dev.conf ./config/prod.conf
 ```
 
 You will need to update the server_name value in your new conf file.
+
+### Copy DOTENV
+``` bash
+cp .env.example .env
+```
 
 ### NPM
 Log into your nuxtjs container
