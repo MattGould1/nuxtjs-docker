@@ -1,5 +1,7 @@
 # nuxtjs-docker
-NuxtJS + NGINX + Docker
+NuxtJS + NGINX (ssl) + Docker
+
+You can use this out of the box for nuxt ssr however you will need to update NGINX config files if you're using `nuxt generate`
 
 ## Getting Started
 ### Generate SSL certificates (DEV ONLY)
@@ -85,4 +87,23 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up (optional -d)
 ### Run Nuxt in Prod Mode
 ``` bash
 docker-compose up (optional -d)
+```
+
+
+## Nuxt commands
+Log into your nuxtjs container
+``` bash
+docker-compose run nuxtjs bash
+```
+
+### Generate
+
+``` bash
+# generate a static project
+npm run generate
+```
+
+### Lint
+``` bash
+npm run lint
 ```
