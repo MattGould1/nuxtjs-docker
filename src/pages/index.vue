@@ -27,7 +27,13 @@ import AppLogo from '~/components/AppLogo.vue'
 
 export default {
   components: {
-    AppLogo
+    AppLogo  
+  },
+  data () {
+    return {
+      name: 'NuxtJS Docker',
+      description: 'Nuxt + NGINX + Docker'
+    }
   }
 }
 </script>
