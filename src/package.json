@@ -1,8 +1,8 @@
 {
-  "name": "{{ name }}",
+  "name": "nuxtjs-docker",
   "version": "1.0.0",
-  "description": "{{ description }}",
-  "author": "{{ author }}",
+  "description": "NuxtJS + NGINX + Docker",
+  "author": "Matthew Gould",
   "private": true,
   "scripts": {
     "dev": "nuxt",
