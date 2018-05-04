@@ -44,6 +44,7 @@ services:
             - applications
         ports:
             - 3000:3000
+        container_name: nuxt-js
         command: ["npm", "run", "buildStart"]
         networks:
             - nuxt

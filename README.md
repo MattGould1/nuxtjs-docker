@@ -7,20 +7,16 @@ You can use this out of the box for nuxt ssr however you will need to update NGI
 ### Generate SSL certificates (DEV ONLY)
 #### Ubuntu users
 ``` bash
-./generate_cert.sh
+bash selfsigned.sh --help
 ```
-this script will update apt-get, optionally install openssl (if you do not have it) and then generate your certificates in the certs folder.
+selfsigned.sh is an updated bash script that will generate a self signed certificate that can then be imported into Chrome etc.
+
+For usage `bash selfsigned.sh --help`
 
 #### Everyone else
 You may generate your own certificates (or use pre-existing), update your .env file to reflect the filepath of your certificates.
 
-### Docker Build
-``` bash
-docker-compose build
-```
-
 ### NGINX Config
-
 #### For Dev
 You will need to create or use a pre-existing site from your hosts file
 
@@ -53,10 +49,32 @@ You will need to update the server_name value in your new conf file.
 cp .env.example .env
 ```
 
-### NPM
-Log into your nuxtjs container
+Update your DOTENV with the self signed certicate paths from above.
+
+### Docker Build
+You can now build your docker and begin installing packages
+
 ``` bash
-docker-compose run nuxtjs bash
+docker-compose build
+```
+
+## Nuxt & NPM commands
+You have two options when wanting to run commands in your docker container
+
+1. `docker-compose run nuxtjs bash` will log you into a container
+2. `docker-compose run nuxtjs npm run generate` will run a singular command
+
+With that in mind, you can use normal nuxtjs commands like so:
+
+### Generate
+``` bash
+# generate a static project
+npm run generate
+```
+
+### Lint
+``` bash
+npm run lint
 ```
 
 #### Install
@@ -70,14 +88,8 @@ npm install
 npm install package-name --save
 ```
 
-## Running Nuxt + Docker
-### DOTENV
-Before running Docker you must make sure that a config file for your ENVIRONMENT exists and that you have included SSL certificates. Below is an example of a production .env using letsencrypt certificates.
-```
-ENVIRONMENT=prod
-SSL_CERT_PATH=/etc/letsencrypt/live/example.com/cert.pem
-SSL_CERT_KEY_PATH=/etc/letsencrypt/live/example.com/privkey.pem
-```
+## Running NuxtJS
+Make sure that you have updated the NGINX config as well as your DOTENV!
 
 ### Run Nuxt in Dev Mode
 ``` bash
@@ -87,23 +99,3 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up (optional -d)
 ### Run Nuxt in Prod Mode
 ``` bash
 docker-compose up (optional -d)
-```
-
-
-## Nuxt commands
-Log into your nuxtjs container
-``` bash
-docker-compose run nuxtjs bash
-```
-
-### Generate
-
-``` bash
-# generate a static project
-npm run generate
-```
-
-### Lint
-``` bash
-npm run lint
-```
